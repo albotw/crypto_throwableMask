@@ -1,12 +1,21 @@
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Scanner;
+import javax.swing.*;
 
-public class Main {
+import javax.accessibility.Accessible;
+import javax.swing.*;
 
+
+public class Main{
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
+
+
+      /*  Scanner scanner = new Scanner(System.in);
         System.out.println("Fichier a crypter: ");
         String filePath = scanner.nextLine();
         System.out.println("Fichier de sortie: ");
@@ -28,5 +37,12 @@ public class Main {
 
         File out = new File(outPath);
         Files.write(out.toPath(), content);
+
+
+*/
+       MyFrame MyFrame = new MyFrame();
+        MyFrame.setVisible(true);
+
+
+        }
     }
-}
