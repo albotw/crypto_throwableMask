@@ -9,12 +9,14 @@ public class MyFrame extends JFrame implements ActionListener {
     JButton button;
     MyFrame(){
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        /*this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new FlowLayout());
         JPanel panel = new JPanel();
-        panel.setBounds(50, 50, 200, 200);
+        panel.setBounds(200, 200, 200, 200);
         panel.setBackground(Color.darkGray);
         this.add(panel);
+        panel.setLayout(new GridLayout(2,1));
+
 
         button = new JButton("Select File");
         button.addActionListener(this);
@@ -33,12 +35,18 @@ public class MyFrame extends JFrame implements ActionListener {
         JMenu quitter = new JMenu("Quitter");
         menubar.add(quitter);
 
+
+
         // Fenetre pour le masque
         JDialog jd = new JDialog(this);
-        jd.setLayout(new FlowLayout());
+        jd.setLayout(new GridLayout(1,2));
         jd.setBounds(500,300,300,400);
         JLabel JL = new JLabel("Voici le masque");
-        jd.setVisible(true);
+        jd.setVisible(true);*/
+
+
+
+
 
 
 
