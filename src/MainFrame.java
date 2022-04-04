@@ -1,9 +1,6 @@
 import javax.swing.*;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -22,8 +19,6 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() throws Exception {
         UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-
-        updateComponentTreeUI(this);
 
         updateComponentTreeUI(this);
         initComponents();
@@ -57,6 +52,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -90,15 +86,23 @@ public class MainFrame extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 Main.mode = "single";
                 Main.singleInit = Long.parseLong(jTextField1.getText());
-                System.out.println("single: " + Main.singleInit);
+                JOptionPane.showMessageDialog(null, "Valeur définie");
             }
         });
-        jTextField1.addMouseListener(new MouseAdapter() {
+
+        jTextField1.addFocusListener(new FocusAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void focusGained(FocusEvent e) {
+                System.out.println("gained focus");
                 if (Objects.equals(jTextField1.getText(), "Entrez la clé de cryptage (int)")) {
                     jTextField1.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (Objects.equals(jTextField1.getText(), "")) {
+                    jTextField1.setText("Entrez la clé de cryptage (int)");
                 }
             }
         });
@@ -114,15 +118,21 @@ public class MainFrame extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 Main.mode = "multi";
                 Main.vnInit = Long.parseLong(jTextField2.getText());
-                System.out.println(Main.vnInit);
+                JOptionPane.showMessageDialog(null, "Valeur définie");
             }
         });
-        jTextField2.addMouseListener(new MouseAdapter() {
+        jTextField2.addFocusListener(new FocusAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void focusGained(FocusEvent e) {
                 if (Objects.equals(jTextField2.getText(), "Entrez la clé 1")) {
                     jTextField2.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (Objects.equals(jTextField2.getText(), "")) {
+                    jTextField2.setText("Entrez la clé 2");
                 }
             }
         });
@@ -134,14 +144,21 @@ public class MainFrame extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 Main.mode = "multi";
                 Main.xnInit = Long.parseLong(jTextField3.getText());
+                JOptionPane.showMessageDialog(null, "Valeur définie");
             }
         });
-        jTextField3.addMouseListener(new MouseAdapter() {
+        jTextField3.addFocusListener(new FocusAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void focusGained(FocusEvent e) {
                 if (Objects.equals(jTextField3.getText(), "Entrez la clé 2")) {
                     jTextField3.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (Objects.equals(jTextField3.getText(), "")) {
+                    jTextField3.setText("Entrez la clé 2");
                 }
             }
         });
@@ -153,14 +170,21 @@ public class MainFrame extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 Main.mode = "multi";
                 Main.ynInit = Long.parseLong(jTextField4.getText());
+                JOptionPane.showMessageDialog(null, "Valeur définie");
             }
         });
-        jTextField4.addMouseListener(new MouseAdapter() {
+        jTextField4.addFocusListener(new FocusAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                if (Objects.equals(jTextField4.getText(), "Entrez la clé 3")) {
+            public void focusGained(FocusEvent e) {
+                if (Objects.equals(jTextField4.getText(), "Entrez la clé 3")){
                     jTextField4.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (Objects.equals(jTextField4.getText(), "")) {
+                    jTextField4.setText("Entrez la clé 3");
                 }
             }
         });
@@ -172,16 +196,22 @@ public class MainFrame extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 Main.mode = "multi";
                 Main.znInit = Long.parseLong(jTextField5.getText());
+                JOptionPane.showMessageDialog(null, "Valeur définie");
             }
         });
-        jTextField5.addMouseListener(new MouseAdapter() {
+        jTextField5.addFocusListener(new FocusAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void focusGained(FocusEvent e) {
                 if (Objects.equals(jTextField5.getText(), "Entrez la clé 4")) {
                     jTextField5.setText("");
                 }
+            }
 
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (Objects.equals(jTextField5.getText(), "")) {
+                    jTextField5.setText("Entrez la clé 4");
+                }
             }
         });
         jPanel6.add(jTextField5);
@@ -200,8 +230,9 @@ public class MainFrame extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     Main.process();
-                } catch (IOException ex) {
+                } catch (Exception ex) {
                     ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
             }
         });
@@ -214,15 +245,24 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu1.setText("Fichier");
 
         jMenuItem1.setText("Choisir un fichier");
+        jMenuItem2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getUserFile();
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Quitter");
+        jMenuItem2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Configuration");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -250,6 +290,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
