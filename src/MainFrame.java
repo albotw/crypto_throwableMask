@@ -18,9 +18,13 @@ public class MainFrame extends javax.swing.JFrame {
      * Creates new form MainFrame
      */
     public MainFrame() throws Exception {
-        UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-
-        updateComponentTreeUI(this);
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+            updateComponentTreeUI(this);
+        }
+        catch(Exception e) {
+            System.out.println("Look and Feel Windows indisponible");
+        }
         initComponents();
     }
 
@@ -132,7 +136,7 @@ public class MainFrame extends javax.swing.JFrame {
             @Override
             public void focusLost(FocusEvent e) {
                 if (Objects.equals(jTextField2.getText(), "")) {
-                    jTextField2.setText("Entrez la clé 2");
+                    jTextField2.setText("Entrez la clé 1");
                 }
             }
         });

@@ -23,11 +23,11 @@ public class Main{
         Main.checkValues();
         byte[] file = Files.readAllBytes(Main.inputPath);
 
-        if (Main.mode == "single") {
+        if (Objects.equals(Main.mode, "single")) {
             System.out.println("single process");
             singleProcess(file);
         }
-        else if (Main.mode == "multi") {
+        else if (Objects.equals(Main.mode, "multi")) {
             System.out.println("multi process");
             multiProcess(file);
         }
