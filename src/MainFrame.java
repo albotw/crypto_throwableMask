@@ -275,11 +275,11 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void getUserFile() {
         JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
         int response = fileChooser.showOpenDialog(null);
         if (response == JFileChooser.APPROVE_OPTION) {
             Main.inputPath = fileChooser.getSelectedFile().toPath();
             jLabel1.setText(Main.inputPath.toString());
-
         }
     }
 

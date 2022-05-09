@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="crypto_java:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/crypto_java_jar</output-path>
+    <root id="archive" name="crypto_java.jar">
+      <element id="module-output" name="crypto_java" />
+    </root>
+  </artifact>
+</component>
